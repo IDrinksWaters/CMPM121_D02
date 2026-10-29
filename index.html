@@ -3,10 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D2 project</title>
+    <title>Drawing canvas :DDD</title>
+
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f3f4f6;
+      padding: 20px;
+    }
+
+    .toolbar {
+      margin: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    canvas {
+      background: black;
+      border: 2px solid #333;
+      max-width: 100%;
+      height: auto;
+      cursor: crosshair;
+      touch-action: none;
+    }
+    </style>
   </head>
+
   <body>
-    <main id="app"></main>
+    <main id="app">
+      <h1>Simple Drawing Tool</h1>
+      <p>Left click and draw around to make your art :D</p>
+
+      <div class="toolbar">
+        <button id="undo" disabled>Undo</button>
+        <button id="redo" disabled>Redo</button>
+        <button id="clear">Clear</button>
+      </div>
+
+      <canvas id="canvas" width="800" height="450"></canvas>
+      <p id="status">0 line drawn</p>
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
