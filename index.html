@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drawing canvas :DDD</title>
+    <title>Simple Drawing Tool</title>
 
     <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #f3f4f6;
+      background: white;
       padding: 20px;
+      color: black;
     }
 
     .toolbar {
@@ -23,11 +24,48 @@
     button {
       padding: 10px 20px;
       cursor: pointer;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
 
     button:disabled {
       cursor: not-allowed;
       opacity: 0.5;
+    }
+
+    .settings {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+    }
+
+    .setting {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .setting label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .setting input[type="range"] {
+      cursor: pointer;
+    }
+
+    .setting select {
+      padding: 5px;
+    }
+
+    .value {
+      font-size: 13px;
+      color: #555;
     }
 
     canvas {
@@ -38,13 +76,18 @@
       cursor: crosshair;
       touch-action: none;
     }
+
+    #status {
+      font-size: 14px;
+      color: #555;
+    }
     </style>
   </head>
 
   <body>
     <main id="app">
       <h1>Simple Drawing Tool</h1>
-      <p>Left click and draw around to make your art :D</p>
+      <p>Left click and drag to draw!</p>
 
       <div class="toolbar">
         <button id="undo" disabled>Undo</button>
@@ -52,8 +95,54 @@
         <button id="clear">Clear</button>
       </div>
 
+      <!--BELOW IS FOR BRUSH CUSTOMIZATION-->
+      <div class="settings">
+        <div class="setting">
+          <label for="opacity">Line Opacity</label>
+          <input
+            type="range"
+            id="opacity"
+            min="0"
+            max="100"
+            value="100"
+          />
+          <span class="value" id="opacityValue">100%</span>
+        </div>
+
+        <div class="setting">
+          <!--stores min and max value there is to select how large the brush size can be-->
+          <label for="size">Line Size</label>
+          <input
+            type="range"
+            id="size"
+            min="1"
+            max="30"
+            value="4"
+          />
+          <span class="value" id="sizeValue">4 px</span>
+        </div>
+
+        <!--Holds every color value there is, only about 10 colors available-->
+        <div class="setting">
+          <label for="color">Line Color</label>
+          <select id="color">
+            <option value="#ffffff">White</option>
+            <option value="#ff4d4d">Red</option>
+            <option value="#ff9933">Orange</option>
+            <option value="#ffe14d">Yellow</option>
+            <option value="#70e000">Green</option>
+            <option value="#00d4ff">Cyan</option>
+            <option value="#3685ff">Blue</option>
+            <option value="#a855f7">Purple</option>
+            <option value="#ff69b4">Pink</option>
+            <option value="#a0a0a0">Gray</option>
+          </select>
+        </div>
+      </div>
+
       <canvas id="canvas" width="800" height="450"></canvas>
-      <p id="status">0 line drawn</p>
+
+      <p id="status">0 lines drawn</p>
     </main>
 
     <script type="module" src="/src/main.ts"></script>
