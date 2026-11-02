@@ -3,6 +3,7 @@
 ## User Doc.
 
 ### Try the app here: https://idrinkswaters.github.io/CMPM121_D02/
+
 ### How to use the drawing tool:
 
 1. Open the app in a browser.
@@ -55,7 +56,6 @@ Add the new tool's drawing behavior to drawLine() in main.ts (Lines 47–76).
 Update redraw() in main.ts (Lines 78–97) so the new tool can be displayed correctly when the canvas refreshes.
 
 Check the pointer events, undo, redo, and clear functions in main.ts (Lines 122–172) to make sure the new tool works with the existing drawing history.
-
 
 A minimal TypeScript/Vite browser project with Deno checks and GitHub Pages deployment.
 
